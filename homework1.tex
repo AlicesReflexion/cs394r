@@ -19,4 +19,28 @@
 \(\bar{B} \cap (A - C) = \{1\}, |\bar{B} \cap (A - C)| = 1\)
 \subsection*{e}
 \((A - B) \cap (B - C) = \emptyset, |(A - B) \cap (B - C)| = 0\)
+
+\section{}
+\subsection*{a}
+\(|A \cup B| = |A| + |B| \)\\
+No. If there's any intersection between A and B, that will be counted twice.\\
+\subsection*{b}
+\(|A \cup B| = |A| + |B| + |A \cap B|\)\\
+No. If there's any intersection between A and B, that will be counte thrice.\\
+\subsection*{c}
+\(|A \cup B| = |A| + |B| - |A \cap B|\)\\
+Yes. This accounts for any overlap between A and B.\\
+\subsection*{d}
+\(|A \cup B \cup C| = |A| + |B| + |C|\)\\
+No. Once again, this doesn't account for overlap.\\
+\subsection*{e}
+\(|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|\)\\
+Yes. The intersection between each set is erased once, which means that the intersection between all three is replaced thrice, leaving a "hole." The \(|A \cap B \cap C|\) compensates for this.\\
+\subsection*{f}
+\(|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C|\)\\
+No, as mentioned above, this leaves a "hole" in the middle.\\
+\subsection*{g}
+\(|A \cup B \cup C| = |A| + |B| + |C|\)\\
+No, this is the same as (d).
+
 \end{document}
