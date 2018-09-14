@@ -1,0 +1,255 @@
+\documentclass[12pt]{article}
+\usepackage{mathtools}
+\usepackage{venndiagram}
+\usepackage[left=2cm, right=2cm, top=1cm, bottom=2cm]{geometry}
+\tikzset{font={\fontsize{9pt}{12}\selectfont}}
+\title{CS394 R Homework 2\\
+\large source available at https://github.com/alexskc/cs394r}
+\author{Aleksander Charatonik}
+\begin{document}
+
+\maketitle
+
+\section{}
+\subsection*{a}
+\(\binom{50}{10}\) = \(\frac{50!}{10!(50-10)!}\) = \(10,272,278,170\).
+\subsection*{b}
+\(\binom{1}{1}\binom{1}{1}\binom{1}{1}\binom{47}{7} = \frac{47!}{7!(47-7)!} = 62,891,499\)
+\subsection*{c}
+Simply (b)/(a). \(\frac{62891499}{10272278170}\), or alternatively, \(\frac{\binom{47}{7}}{\binom{50}{10}}\).
+
+\section{}
+\subsection*{a}
+\(\binom{50}{12}\) = \(\frac{50!}{12!(50-12)!} = 121,399,651,100\).
+\subsection*{b}
+\(\binom{28}{7}*\binom{22}{5} = \frac{28!22!}{7!(28-7)!5!(22-5)!} =  31,180,509,360\).
+\subsection*{c}
+Once again, this is (b)/(a), or \(\frac{31180509360}{121399651100}\) the result of \(\frac{\binom{28}{7}*\binom{22}{5}}{\binom{50}{12}}\).
+
+\section{}
+\subsection*{a}
+\(\binom{50}{10}*\binom{40}{15}*\binom{25}{25} = 413,205,933,899,466,227,520\).
+\subsection*{b}
+The number of outcomes where they serve in the first committee together is
+\(\binom{1}{1}*\binom{1}{1}*\binom{48}{8}*\binom{40}{15}*\binom{25}{25} = 15,178,993,490,184,473,664\). This number, over the result in (a) is the probability. So \(\frac{15178993490184473664}{413205933899466227520}\).
+\subsection*{c}
+This is similar to the above, but we have to add the possibilites for every committee together. So,\\
+\(\binom{1}{1}*\binom{1}{1}*\binom{48}{8}*\binom{40}{15}*\binom{25}{25}\) for the first,\\
+\(\binom{50}{10}*\binom{1}{1}*\binom{1}{1}*\binom{38}{13}*\binom{25}{25}\) for the second, and\\
+\(\binom{50}{10}*\binom{40}{15}*\binom{1}{1}*\binom{1}{1}*\binom{23}{23}\) for the third. Adding these three, we get:\\
+\(171,996,159,141,983,469,774\). To get the probability, we put that number over the total number of possibilites, and we get \(\frac{171996159141983469744}{413205933899466227520}\).
+
+\section{}
+\subsection*{a}
+Initially, there are 5 marbles. The probability of taking a red one is \(\frac{3}{5}\), the probability of a green one \(\frac{1}{5}\), and the blue one, likewise, \(\frac{1}{5}\). When a marble is drawn, there are four marbles in the box, however, when it is replaced, the box returns to its initial state and initial probabilities. (an unconditional probability) If the marble is not replaced, then the probability changes based on which marble was drawn (a conditional probability).\\
+If a red one is drawn, the probabilities become:\\
+\(\frac{2}{4}\) for red, \(\frac{1}{4}\) for green, and \(\frac{1}{4}\) for blue.\\
+If a blue one is drawn, the probabilities become:\\
+\(\frac{3}{4}\) for red, \(\frac{1}{4}\) for green, and \(\frac{0}{4}\) for blue.\\
+If a green one is drawn, the probabilities become:\\
+\(\frac{3}{4}\) for red, \(\frac{0}{4}\) for green, and \(\frac{1}{4}\) for blue.\\
+This can be visualized as two trees like this:\\
+\tikzstyle{level 1}=[level distance=4cm, sibling distance=4cm]
+\tikzstyle{level 2}=[level distance=5cm, sibling distance=1.5cm]
+\tikzstyle{box} = [text width=4em, text centered]
+\begin{tikzpicture}[grow=right, sloped, scale=0.75]
+  \node[box] {box \(3R, 1B, 1G\)}
+    child {
+      node[box] {\(3R, 1B, 1G\)}
+      child {
+        node[box] {\(2R, 1B, 1G\)}
+        edge from parent
+        node[above] {\(R\)}
+        node[below] {\(\frac{3}{5}\)}
+      }
+      child {
+        node[box] {\(3R, 0B, 1G\)}
+        edge from parent
+        node[above] {\(B\)}
+        node[below] {\(\frac{1}{5}\)}
+      }
+      child {
+        node[box] {\(3R, 1B, 0G\)}
+        edge from parent
+        node[above] {\(G\)}
+        node[below] {\(\frac{1}{5}\)}
+      }
+      edge from parent
+      node[above] {\(R\)}
+      node[below] {\(\frac{3}{5}\)}
+    }
+    child {
+      node[box] {\(3R, 1B, 1G\)}
+      child {
+        node[box] {\(2R, 1B, 1G\)}
+        edge from parent
+        node[above] {\(R\)}
+        node[below] {\(\frac{3}{5}\)}
+      }
+      child {
+        node[box] {\(3R, 0B, 1G\)}
+        edge from parent
+        node[above] {\(B\)}
+        node[below] {\(\frac{1}{5}\)}
+      }
+      child {
+        node[box] {\(3R, 1B, 0G\)}
+        edge from parent
+        node[above] {\(G\)}
+        node[below] {\(\frac{1}{5}\)}
+      }
+      edge from parent
+      node[above] {\(B\)}
+      node[below] {\(\frac{1}{5}\)}
+    }
+    child {
+      node[box] {\(3R, 1B, 1G\)}
+      child {
+        node[box] {\(2R, 1B, 1G\)}
+        edge from parent
+        node[above] {\(R\)}
+        node[below] {\(\frac{3}{5}\)}
+      }
+      child {
+        node[box] {\(3R, 0B, 1G\)}
+        edge from parent
+        node[above] {\(B\)}
+        node[below] {\(\frac{1}{5}\)}
+      }
+      child {
+        node[box] {\(3R, 1B, 0G\)}
+        edge from parent
+        node[above] {\(G\)}
+        node[below] {\(\frac{1}{5}\)}
+      }
+      edge from parent
+      node[above] {\(G\)}
+      node[below] {\(\frac{1}{5}\)}
+          };
+\end{tikzpicture}
+\begin{tikzpicture}[grow=right, sloped, scale=0.75]
+  \node[box] {box \(3R, 1B, 1G\)}
+    child {
+      node[box] {\(2R, 1B, 1G\)}
+      child {
+        node[box] {\(1R, 1B, 1G\)}
+        edge from parent
+        node[above] {\(R\)}
+        node[below] {\(\frac{2}{4}\)}
+      }
+      child {
+        node[box] {\(2R, 0B, 1G\)}
+        edge from parent
+        node[above] {\(B\)}
+        node[below] {\(\frac{1}{4}\)}
+      }
+      child {
+        node[box] {\(2R, 1B, 0G\)}
+        edge from parent
+        node[above] {\(G\)}
+        node[below] {\(\frac{1}{4}\)}
+      }
+      edge from parent
+      node[above] {\(R\)}
+      node[below] {\(\frac{3}{5}\)}
+    }
+    child {
+      node[box] {\(3R, 0B, 1G\)}
+      child {
+        node[box] {\(3R, 0B, 0G\)}
+        edge from parent
+        node[above] {\(G\)}
+        node[below] {\(\frac{1}{4}\)}
+      }
+       child {
+        node[box] {\(2R, 0B, 1G\)}
+        edge from parent
+        node[above] {\(R\)}
+        node[below] {\(\frac{3}{4}\)}
+      }
+      edge from parent
+      node[above] {\(B\)}
+      node[below] {\(\frac{1}{5}\)}
+    }
+    child {
+      node[box] {\(3R, 1B, 0G\)}
+      child {
+        node[box] {\(3R, 0B, 0G\)}
+        edge from parent
+        node[above] {\(B\)}
+        node[below] {\(\frac{1}{4}\)}
+      }
+       child {
+        node[box] {\(2R, 1B, 0G\)}
+        edge from parent
+        node[above] {\(R\)}
+        node[below] {\(\frac{3}{4}\)}
+      }
+            edge from parent
+      node[above] {\(G\)}
+      node[below] {\(\frac{1}{5}\)}
+          };
+\end{tikzpicture}
+\subsection*{b}
+With replacement, the probability that the first ball was green was \(\frac{1}{5}\), and the probability that the second was blue given the first one, was also \(\frac{1}{5}\), so the total probability is \(\frac{1*1}{5*5} = \frac{1}{25}\).
+\subsection*{c}
+Without replacement, the probability that the first ball was green was \(\frac{1}{5}\), and the probability that the second ball was blue, given that the first was green, was \(\frac{1}{4}\), so the total probability is \(\frac{1*1}{5*4} = \frac{1}{20}\).
+\section{}
+\begin{venndiagram3sets}[labelA=Spanish, labelB=French, labelC=German,
+  labelABC=3, labelOnlyBC=3, labelOnlyAB=9, labelOnlyAC=2,
+  labelOnlyB=11, labelOnlyC=18, labelOnlyA=14,
+  labelNotABC=40]
+\end{venndiagram3sets}
+\subsection*{a}
+\(\frac{40}{100}\)
+\subsection*{b}
+\(\frac{43}{100}\)
+\subsection*{c}
+\(1-\frac{40*39}{100*99}\).
+
+\section{}
+\subsection*{a}
+Two possible states for the first component, times two for the next, and the next, and the next. \(2^4\).
+\subsection*{b}
+Given that 1 and 2 are both working, there are \(2^2\) arrangements in which 3 and 4 can be. Given that 3 and 4 are both working, there are \(2^2\) arrangements in which 1 and 2 can be.  Given that 1, 3 and 4 and working, there are \(2^1\) arrangements in which 2 can be. We have to be careful, however, of the overlap of these combinations, though. Specifically, the combinations where all parts are working, and where 1, 3 and 4 are already counted with "3 and 4 working." Thus, there are seven outcomes in which the system will work.\\
+\((x_1,x_1,x_0,x_0)\\
+(x_1,x_1,x_0,x_1)\\
+(x_1,x_1,x_1,x_0)\\
+(x_0,x_0,x_1,x_1)\\
+(x_0,x_1,x_1,x_1)\\
+(x_1,x_0,x_1,x_1)\\
+(x_1,x_1,x_1,x_1)\\\)
+\section{}
+\subsection*{a}
+\(\frac{6*1*5*4*3*10}{6^5} = \frac{3600}{6^5} \approx .4630\).
+\subsection*{b}
+\(\frac{6*1*5*1*4*15}{6^5} = \frac{1800}{6^5} \approx .2315\).
+\subsection*{c}
+\(\frac{6*5*4*3*2}{6^5} = \frac{720}{7778} \approx .0926\).
+\subsection*{d}
+\(\frac{6*1*1*5*4*20}{6^5} = \frac{2400}{6^5} \approx .1543\).
+\subsection*{e}
+\(\frac{6*1*1*5*1*10}{6^5} = \frac{300}{6^5} \approx .0386\)
+\subsection*{f}
+\(\frac{6*5*1*1*1*5}{6^5} = \frac{150}{6^5} \approx .0193\).
+\subsection*{g}
+\(\frac{6*1*1*1*1}{6^5} = \frac{6}{6^5} \approx .0008\).
+\section{}
+\subsection*{a}
+Probability that the two are equal is \(1/6\). Therefore, probability that they are unequal is \(5/6\), and half of those are for one being greater than the other is half of that. \(5/12\).
+\subsection*{b}
+
+\section{}
+\subsection*{a}
+Our possibility space for each contest is \(\binom{10}{6}\) and \(\binom{12}{6}\).
+The likelihood of one of the sisters representing her school is \(\frac{\binom{1}{1}\binom{9}{5}}{\binom{10}{6}}\). For the other sister, it's \(\frac{\binom{1}{1}\binom{11}{5}}{\binom{12}{6}}\). The likelihood that both will represent their schools is the product \(\frac{\binom{9}{5}\binom{11}{5}}{\binom{10}{6}\binom{12}{6}}\). And the likelihood that both will is the sum of the first two probabilities minus the third. \(\frac{\binom{9}{5}}{\binom{10}{6}}+\frac{\binom{11}{5}}{\binom{12}{6}}-\frac{\binom{9}{5}\binom{11}{5}}{\binom{10}{6}\binom{12}{6}}=\frac{4}{5}\).
+\subsection*{b}
+Each school has chosen 6 students to represent it. That means there are 6 positions for both Rebecca and Elise to be in. Given an arbitrary position for one of them, the likelihood that the other will be in the same position is simply \(\frac{1}{6}\). Since the likelihood of them being together at all is \(\frac{4}{5}\), the likelihood of them being paired up is the product of the two. \(\frac{4}{30}\).
+\subsection*{c}
+If the likelihood of them being paired is \(\frac{1}{6}\), then the likelihood of them not being paired is \(\frac{5}{6}\). So once again a simple product, and we get \(\frac{20}{30}\).
+\section{}
+\subsection*{a}
+The probability of landing a double 3 at any point is \(\frac{1}{36}\). The probability of not getting a double 3 is \(\frac{35}{36}\). The probability of not landding a double 3 after n rolls is \((\frac{35}{36})^n\), so the probability of getting the double 3 is \(1-(\frac{35}{36})^n\).
+\subsection*{b}
+\(\lceil\frac{ln(2)}{ln(\frac{36}{35})}\rceil = 25\).
+\end{document}
