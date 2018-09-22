@@ -1,0 +1,83 @@
+\documentclass[12pt]{article}
+\usepackage{mathtools}
+\usepackage{venndiagram}
+\usepackage[left=2cm, right=2cm, top=1cm, bottom=2cm]{geometry}
+\tikzset{font={\fontsize{9pt}{12}\selectfont}}
+\title{CS394 R Homework 3\\
+\large source available at https://github.com/alexskc/cs394r}
+\author{Aleksander Charatonik}
+\begin{document}
+
+\maketitle
+
+\section{}
+\subsection*{a}
+First, we can find the probability that there is no such accident, one such accident, and two such accidents in a month.\\
+\(P(X = 0) = \frac{e^{-1.5}1.5^0}{0!}\)\\
+\(P(X = 1) = \frac{e^{-1.5}1.5^1}{1!}\)\\
+\(P(X = 2) = \frac{e^{-1.5}1.5^2}{2!}\)\\
+And then we simply take one minus the sum of these probabilities.
+\(1-e^{-1.5}\frac{29}{8} \approx 0.191\)\\
+\subsection*{b}
+This is simply the sum of the first two probabilities we found.
+\(e^{-1.5}\frac{1+1.5}{1} \approx 0.558\)\\.
+
+\section{}
+\(P(X = 0) = P(Y = -3) = \frac{1}{16}\)\\
+\(P(X = 1) = P(Y = -2) = \frac{4}{16}\)\\
+\(P(X = 2) = P(Y = -1) = \frac{4}{16}\)\\
+\(P(X = 3) = P(Y = 0) = \frac{4}{16}\)\\
+\(P(X = 4) = P(Y = 1) = \frac{1}{16}\)\\
+Zero otherwise.
+
+\section{}
+The probability of X is dependant on the number of students on each bus. So \(P(X=40) = \frac{40}{150}\), \(P(X=35) = \frac{35}{150}\), and so on. \(E[X] = \frac{(40 * 40) + (35 * 35) + (25 * 25) + (50 * 50)}{150} = \frac{119}{3}\).\\
+\(var[X] = E[x^2] - (E[X])^2\)\\
+\(var[X] = \frac{(40^2 * 40) + (35^2 * 35) + (25^2 * 25) + (50^2 * 50)}{150} - (\frac{119}{3})^2 = 1650 - \frac{14161}{9} = \frac{689}{9}\).\\
+\\
+By contrast, the buses are all the same from the driver's perspective. The probability is simply \(\frac{1}{4}\). \(E[X] = \frac{(1 * 40) + (1*35) + (1 * 25) + (1 * 50)}{4} = \frac{75}{2}\).\\
+\(var[X] = \frac{(1 * 40^2) + (1 * 35^2) + (1 * 25^2) + (1 * 50^2)}{4} - (\frac{75}{2})^2 = \frac{2975}{2} - \frac{5625}{4} = \frac{325}{4}\).
+
+\section{}
+\subsection*{a}
+\(P[Y = 2] = \frac{1}{16}\)\\
+\(P[Y = 3] = \frac{2}{16}\)\\
+\(P[Y = 4] = \frac{3}{16}\)\\
+\(P[Y = 5] = \frac{4}{16}\)\\
+\(P[Y = 6] = \frac{3}{16}\)\\
+\(P[Y = 7] = \frac{2}{16}\)\\
+\(P[Y = 8] = \frac{1}{16}\)\\
+Zero otherwise.\\
+\subsection*{b}
+\(P[Y > 5] = \frac{3 + 2 + 1}{16} = \frac{3}{8}\)
+\subsection*{c}
+\(P[Y > 5| Y \geq 3] = \frac{\frac{3 + 2 + 1}{16}}{\frac{2+3+4+3+2+1}{16}} = \frac{2}{5}\)
+\subsection*{d}
+\(E[Y] = \frac{(2 * 1) + (3 * 2) + (4 * 3) + (5 * 4) + (6 * 3) + (7 * 2) + (8 *1)}{16} = 5\)
+\subsection*{e}
+\(E[Y^2] = \frac{(2^2 * 1) + (3^2 * 2) + (4^2 * 3) + (5^2 * 4) + (6^2 * 3) + (7^2 * 2) + (8^2 * 1)}{16} = \frac{55}{2}\)
+\subsection*{f}
+\(Var(Y) = E[Y^2] - (E[Y])^2 = \frac{55}{2} - 25 = \frac{5}{2}\)
+
+\section{}
+\subsection*{a}
+Let Y denote for a given number of days. We have to remember to consider that if we are paying for a day, we also have to pay for all the previous days.
+\(E[Y] = \frac{(5 * 1000) + (4 * 2000) + (3 * 3000) + (2 * 3500) + (1 * 4000)}{15} = 2200\).
+\subsection*{b}
+\(E[Y^2] = \frac{(5 * 1000000) + (4 * 4000000) + (3 * 9000000) + (2 * 12250000) + (1* 16000000)}{15} = 5900000\)\\
+\((E[Y])^2 = 4840000\)\\
+\(Var(Y) = E[Y^2] - (E[Y])^2 = 1060000\)\\
+\section{}
+\subsection*{a}
+Probabilities awlays have to add up to 1. So to get \(\alpha(5 + 8 + 11 + 14) = 1, \alpha = \frac{1}{38}\).
+\subsection*{b}
+\(E[X] = \frac{(0 * 5) + (1 * 8) + (2 * 11) + (3 * 14)}{38} = \frac{72}{38}\)
+\subsection*{c}
+\(E[X^2] - \frac{(0 * 5) + (1 * 8) + (4 * 11) + (9 * 14)}{38} = \frac{178}{38}\)\\
+\((E[X]^2) = \frac{72^2}{38^2}\)\\
+\(Var(X) = E[X^2] - (E[X]^2) = \frac{395}{361}\)
+\subsection*{d}
+\(P[X \leq 2] = 1 - P[X=3] = 1 - \frac{14}{38} = \frac{24}{38}\).
+
+
+\end{document}
